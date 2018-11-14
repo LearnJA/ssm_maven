@@ -1,0 +1,3 @@
+server:
+  context-path: /ems
+  port: 8989
