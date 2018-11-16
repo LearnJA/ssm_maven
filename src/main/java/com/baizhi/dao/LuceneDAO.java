@@ -8,22 +8,19 @@ import org.apache.lucene.document.StringField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.*;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class LuceneDAO {
     /*添加索引*/
     public void addLucene(Product product){
         IndexWriter indexWriter = LuceneUtil.getIndexWriter();
         try{
-            Document doc=new Document();
-                doc.add(new StringField("id",product.getId(),Field.Store.YES));
-                doc.add(new StringField("name",product.getName(),Field.Store.YES));
-                doc.add(new StringField("price",String.valueOf(product.getPrice()),Field.Store.YES));
-                doc.add(new StringField("desctory",product.getDesctory(),Field.Store.YES));
-                doc.add(new StringField("date",product.getDesctory(),Field.Store.YES));
-                doc.add(new StringField("addr",product.getAddr(),Field.Store.YES));
+            Document document=getDocument(product);
+            indexWriter.addDocument(document);
             //页面对象索引写入索引库
             LuceneUtil.commit(indexWriter);
         }catch (Exception e){
@@ -46,17 +43,37 @@ public class LuceneDAO {
             for(int i=0;i<scoreDocs.length;i++){
                 int doc = scoreDocs[i].doc;
                 Document document=indexSearcher.doc(doc);
-                product.setId(document.get("id"));
-                product.setName(document.get("name"));
-                product.setPrice(Double.valueOf(document.get("price")));
-                product.setDate(document.get("date"));
-                product.setAddr(document.get("addr"));
-                product.setDesctory(document.get("desctory"));
+                product=getProduct(document);
                 pros.add(product);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return pros;
+    }
+
+    //转换document
+    public Document getDocument(Product product){
+        Document doc=null;
+            doc.add(new StringField("id",product.getId(),Field.Store.YES));
+            doc.add(new StringField("name",product.getName(),Field.Store.YES));
+            doc.add(new StringField("price",String.valueOf(product.getPrice()),Field.Store.YES));
+            doc.add(new StringField("desctory",product.getDesctory(),Field.Store.YES));
+            doc.add(new StringField("date",product.getDesctory(),Field.Store.YES));
+            doc.add(new StringField("addr",product.getAddr(),Field.Store.YES));
+        return doc;
+    }
+
+    /*转换成product*/
+    public Product getProduct(Document document){
+        Product product=null;
+            product.setId(document.get("id"));
+            product.setName(document.get("name"));
+            product.setPrice(Double.valueOf(document.get("price")));
+            product.setDesctory(document.get("desctory"));
+            product.setAddr(document.get("add"));
+            product.setDate(document.get("date"));
+            product.setStatus(Integer.valueOf(document.get("status")));
+        return product;
     }
 }

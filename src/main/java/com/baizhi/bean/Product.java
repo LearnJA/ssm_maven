@@ -11,7 +11,7 @@ public class Product {
     private String name;
     private Double price;
     private String desctory;
-    private MultipartFile file;
+    private String filename;
     private Integer status;
     //@JsonFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -21,12 +21,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(String id, String name, Double price, String desctory, MultipartFile file, Integer status, String date, String addr) {
+    public Product(String id, String name, Double price, String desctory, String filename, Integer status, String date, String addr) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.desctory = desctory;
-        this.file = file;
+        this.filename = filename;
         this.status = status;
         this.date = date;
         this.addr = addr;
@@ -64,12 +64,12 @@ public class Product {
         this.desctory = desctory;
     }
 
-    public MultipartFile getFile() {
-        return file;
+    public String getFilename(String name) {
+        return filename;
     }
 
-    public void setFile(MultipartFile file) {
-        this.file = file;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
     public Integer getStatus() {
@@ -103,7 +103,7 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", desctory='" + desctory + '\'' +
-                ", file=" + file +
+                ", filename='" + filename + '\'' +
                 ", status=" + status +
                 ", date='" + date + '\'' +
                 ", addr='" + addr + '\'' +

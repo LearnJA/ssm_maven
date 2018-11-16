@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/pro")
@@ -18,6 +20,12 @@ public class ProductController {
 
     @RequestMapping("/add")
     public String addPro(Product product){
+        product.setId(UUID.randomUUID().toString());
+        try{
+            proService.addPro(product);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         System.out.println(product);
         return "index";
     }

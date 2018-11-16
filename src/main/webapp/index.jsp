@@ -144,13 +144,13 @@ body,button,input,select,textarea {
 }
 
 </style>
-<link rel="stylesheet" id="s_superplus_css_lnk" type="text/css" href="./index_files/super_min_0cb4b166.css">
-<link rel="stylesheet" type="text/css" href="./index_files/card_min_e8bcf60d.css">
-<link rel="stylesheet" href="./index_files/ubase_83c8f0ba.css">
-<link rel="stylesheet" href="./index_files/mt_min_d0e7c6d2.css">
-<link rel="stylesheet" href="./index_files/nsguide_a8cbc2e7.css">
-<link rel="stylesheet" href="./index_files/super_ext_c02dfc40.css">
-<script type="text/javascript" src="./index_files/jquery.js"></script>
+<link rel="stylesheet" id="s_superplus_css_lnk" type="text/css" href="${pageContext.request.contextPath}/index_files/super_min_0cb4b166.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/index_files/card_min_e8bcf60d.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/index_files/ubase_83c8f0ba.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/index_files/mt_min_d0e7c6d2.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/index_files/nsguide_a8cbc2e7.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/index_files/super_ext_c02dfc40.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/index_files/jquery.js"></script>
 <script type="text/javascript">
 	$(function(){
 	
@@ -164,7 +164,7 @@ body,button,input,select,textarea {
 		<div id="s_fm" class="s_form">
 			<div class="s_form_wrapper" id="s_form_wrapper">
 				<div id="lg" class="s-p-top">
-					<img id="s_lg_img" src="./index_files/logo.png">
+					<img id="s_lg_img" src="${pageContext.request.contextPath}/index_files/logo.png">
 				</div>
 				<form id="form" action="" class="fm">
 					<input type="text" class="s_ipt" name="keyWords" id="kw" maxlength="100" autocomplete="off">
